@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h2>Call Details</h2>
+    <table>
+        <tr>
+            <th>Problem Number:</th>
+            <td>{{ call.problem_number }}</td>
+        </tr>
+        <tr>
+            <th>Caller Name:</th>
+            <td>{{ call.caller_name }}</td>
+        </tr>
+        <tr>
+            <th>Helpdesk Operator:</th>
+            <td>{{ call.helpdesk_operator }}</td>
+        </tr>
+        <!-- Add more details here as needed -->
+    </table>
+    <h3>Notes and Description</h3>
+    <p>{{ call.notes }}</p>
+{% endblock %}

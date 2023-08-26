@@ -1,0 +1,10 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h2>Problem Types</h2>
+    <ul>
+        {% for problem_type in problem_types %}
+            <li>{{ problem_type }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

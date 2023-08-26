@@ -1,0 +1,17 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h2>Specialist List</h2>
+    <table>
+        <tr>
+            <th>Specialist Name</th>
+            <th>Problems Assigned</th>
+        </tr>
+        {% for specialist in specialists %}
+            <tr>
+                <td>{{ specialist.name }}</td>
+                <td>{{ specialist.problems_assigned }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

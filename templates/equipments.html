@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h2>Equipment Register</h2>
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>Serial Number</th>
+            <th>Equipment Type</th>
+            <th>Software Name</th>
+            <th>Department Name</th>
+        </tr>
+        {% for equipment in equipments %}
+            <tr>
+                <td>{{ equipment.serial_number }}</td>
+                <td>{{ equipment.equipment_type }}</td>
+                <td>{{ equipment.software_name }}</td>
+                <td>{{ equipment.department_name }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

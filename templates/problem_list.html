@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h2>Problem list</h2>
+    <table class="table table-striped table-bordered">
+        <tr>
+            <th>Problem ID</th>
+            <th>Problem Title</th>
+            <th>Problem Type</th>
+            <th>Specialist Assigned</th>
+            <th>Action</th>
+        </tr>
+        {% for problem in problems %}
+            <tr>
+                <td>{{ problem.problem_id }}</td>
+                <td>{{ problem.problem_title }}</td>
+                <td>{{ problem.problem_type_name }}</td>
+                <td>{{ problem.specialist }}</td>
+                <td>
+                    <a href="/view_problem/{{ problem.problem_id }}" class="btn btn-warning btn-xs">Learn More</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

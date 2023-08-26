@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<style>
+    body {
+      padding: 30px;
+    }
+
+    .problem-title {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .section-content {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+  </style>
+
+
+<div class="container">
+    <h1>Problem Details</h1>
+    {% for problem in problems %}
+        <!-- Problem ID (Hidden) -->
+        <input type="hidden" id="problem_id" value="{{ problem.problem_id }}">
+        <div class="container">
+            <!-- Problem Title -->
+            <h3 class="problem-title">ProblemTitle: {{ problem.problem_title }}</h3>
+            <div class="row mt-4">
+                <div class="col">
+                <!-- Problem Type -->
+                <p class="section-title"><strong>Problem Type:</strong> <span class="section-content">{{ problem.problem_type }}</span></p>
+                    <div class="section-title">
+                        <strong>Description</strong>
+                    </div>
+                    <div class="section-content">
+                        {{ problem.description }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div>
+                {% if problem.specialist %}
+                        <strong class="section-title">Specialist Assigned:</strong> <p class="section-content">{{ problem.specialist }}</p>
+                {% else %}
+                    <strong class="section-title">No Specialist Assigned Yet</strong>
+                    <a href="{{url_for('assign_specialist/ problem.P_ID /problem.problem_id')}}" class="btn ">Assign one</a>
+                {% endif %}
+            </div>    
+                <!-- Solution (if problem is solved) -->
+            {% if problem.is_solved %}
+                <div class="section-title">
+                    <strong>Solution</strong>
+                </div>
+                <div class="section-content">
+                    {{ problem.solution }}
+                </div>
+            {% else %}
+                <strong>Not Solved Yet</strong>
+                <a href="{{url_for('resolve_problem/ problem.P_ID /problem.assign_specialist')}}" class="btn ">Assign one</a>
+            {% endif %}
+
+        <!-- Caller Name -->
+        <div class="mt-3">
+        <strong class="section-title">Caller Name:</strong> <p class="section-content">{{ problem.caller_name }}</p>
+        </div>
+    </div>
+  {% endfor %}
+{% endblock %}

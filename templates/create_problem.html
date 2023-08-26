@@ -1,0 +1,43 @@
+{% extends 'layout.html'%}
+
+{% block content %}
+<div class="container d-flex align-items-center">
+  <div class="col-md-6">
+    <h1>Problem Creation</h1>
+
+    <div class="d-flex justify-content-end mt-3">
+      <a href="{{ url_for('problem_list') }}" class="btn">Check Previous problems</a>
+    </div>    
+
+    <form method="POST" action="">
+      {{ form.hidden_tag() }}
+      <div>
+        {{ form.problem_title.label }} {{ form.problem_title(class='form-control') }}
+        {% for error in form.problem_title.errors %}
+          <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+      </div>
+      <div class="mb-3">
+        {{ form.description.label }} {{ form.description(class='form-control') }}
+        {% for error in form.description.errors %}
+          <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+      </div>
+      <div class="mb-3">
+        {{ form.problem_type.label }} {{ form.problem_type(class='form-control') }}
+        {% for error in form.problem_type.errors %}
+          <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+      </div>
+      <div class="mb-3">
+        {{ form.caller.label }} {{ form.caller(class='form-control') }}
+        {% for error in form.caller.errors %}
+          <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+      </div>
+      
+      <div>{{ form.submit( class="btn btn-primary" ) }}</div>
+    </form>
+  </div>
+</div>
+{% endblock content %}

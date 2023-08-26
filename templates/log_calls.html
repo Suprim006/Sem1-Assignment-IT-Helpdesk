@@ -1,0 +1,46 @@
+{% extends 'layout.html'%}
+
+{% block content %}
+<div class="container d-flex align-items-center">
+  <div class="col-md-6">
+    <h1>Call Logging</h1>
+    <form method="POST" action="">
+      {{ form.hidden_tag() }}
+      <div class="mb-3">
+        {{ form.operator.label }} {{ form.operator(class="form-control") }}
+        {% for error in form.operator.errors %}
+          <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+      </div>
+      <div class="mb-3">
+        {{ form.caller.label }} {{ form.caller(class="form-control") }}
+        {% for error in form.caller.errors %}
+          <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+        <a href="{{url_for('personnels')}}" class="d-flex justify-content-end mt-3">Check personnels</a>
+      </div>
+      <div class="mb-3">
+        {{ form.call_time.label }} {{ form.call_time(class="form-control") }}
+        {% for error in form.call_time.errors %}
+          <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+      </div>
+      <div class="mb-3">
+        {{ form.serial_number.label }} {{ form.serial_number(class="form-control") }}
+        {% for error in form.serial_number.errors %}
+          <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+        <a href="{{url_for('equipments')}}" class="d-flex justify-content-end mt-3">Check equipments</a>
+      </div>
+      <div class="mb-3">
+        {{ form.call_note.label }} {{ form.call_note(class="form-control") }}
+        {% for error in form.call_note.errors %}
+          <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+      </div>
+      
+      <div>{{ form.submit(class="btn btn-primary") }}</div>
+    </form>
+  </div>
+</div>
+{% endblock content %}
